@@ -1,0 +1,33 @@
+{{FrontSide}}
+
+<hr>
+
+<div id="back">
+    <div id="contextBack">
+        {{Back}}
+    </div>
+<div>
+
+<div id="image">{{Image}}</div>
+
+<script>
+    const store = { indexShow: 0 };
+
+    var HTMLElementContentFront = document.querySelector("#contentFront")
+
+    function showItem(HTMLElement) {
+        HTMLElement.style.boxShadow = "none";
+        HTMLElement.style.color = "inherit";
+    }
+
+    showItem(HTMLElementContentFront)
+
+    document.addEventListener("click", function () {
+        const hiddenDiv = document.querySelectorAll("i");
+
+        if (hiddenDiv[store.indexShow]) {
+            showItem(hiddenDiv[store.indexShow])
+            store.indexShow += 1;
+        }
+    });
+</script>

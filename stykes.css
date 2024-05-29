@@ -1,0 +1,47 @@
+.card {
+    font-family: arial;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#front {}
+#contentFront {
+    box-shadow: inset 0 0 999px gray;
+    color: transparent;
+}
+
+#audioFront {}
+
+#contextFront {}
+
+#back {}
+#back img {
+    max-height: 100vh;
+}
+
+#contextBack {}
+
+#image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#image img {
+    max-width: 45vw;
+    object-fit: contain;
+}
+
+i {
+    box-shadow: inset 0 0 999px gray;
+    color: transparent;
+    font-style: normal;
+}
+
+b {
+    color: rgb(255, 255, 0);
+}

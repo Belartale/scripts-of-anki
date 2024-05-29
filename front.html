@@ -1,0 +1,25 @@
+<div id="front">
+    <span id="contentFront">{{Front}}</span>
+<div>
+<div id="audioFront">{{AudioFront}}<div>
+<div id="contextFront">{{ContextFront}}</div>
+
+<script>
+    var HTMLElementContentFront = document.querySelector("#contentFront");
+    var HTMLElementBack = document.querySelector("#back");
+
+    function show(HTMLElement) {
+        HTMLElement.style.boxShadow = "none";
+        HTMLElement.style.color = "inherit";
+    }
+
+    if (!HTMLElementBack) {
+        if (HTMLElementContentFront) {
+            setTimeout(() => {
+                show(HTMLElementContentFront);
+            }, 3_000)
+        }
+    } else {
+        show(HTMLElementContentFront);
+    }
+</script>
