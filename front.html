@@ -2,10 +2,13 @@
     <span id="contentFront">{{Front}}</span>
 <div>
 <div id="audioFront">{{AudioFront}}<div>
-<div id="contextFront">{{ContextFront}}</div>
+<div id="contextFront">
+    <span id="contentContextFront">{{ContextFront}}</span>
+</div>
 
 <script>
     var HTMLElementContentFront = document.querySelector("#contentFront");
+    var HTMLElementContentContextFront = document.querySelector("#contentContextFront");
     var HTMLElementBack = document.querySelector("#back");
 
     function show(HTMLElement) {
@@ -17,6 +20,7 @@
         if (HTMLElementContentFront) {
             setTimeout(() => {
                 show(HTMLElementContentFront);
+                HTMLElementContentContextFront && show(HTMLElementContentContextFront);
             }, 3_000)
         }
     } else {
