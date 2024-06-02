@@ -11,23 +11,27 @@
 <div id="image">{{Image}}</div>
 
 <script>
-    const store = { indexShow: 0 };
+    (function () {
+        try {
+            const store = { indexShow: 0 };
 
-    var HTMLElementContentFront = document.querySelector("#contentFront")
+            function showItem(HTMLElement) {
+                HTMLElement.style.boxShadow = "none";
+                HTMLElement.style.color = "inherit";
+            }
 
-    function showItem(HTMLElement) {
-        HTMLElement.style.boxShadow = "none";
-        HTMLElement.style.color = "inherit";
-    }
+            document.addEventListener("click", function () {
+                const hiddenDiv = document.querySelectorAll("i");
 
-    showItem(HTMLElementContentFront)
-
-    document.addEventListener("click", function () {
-        const hiddenDiv = document.querySelectorAll("i");
-
-        if (hiddenDiv[store.indexShow]) {
-            showItem(hiddenDiv[store.indexShow])
-            store.indexShow += 1;
+                if (hiddenDiv[store.indexShow]) {
+                    showItem(hiddenDiv[store.indexShow]);
+                    store.indexShow += 1;
+                }
+            });   
+        } catch (error) {
+            document.body.style.backgroundColor = 'red';
+            throw error;
         }
-    });
+    })();
+
 </script>

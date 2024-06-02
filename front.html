@@ -7,23 +7,29 @@
 </div>
 
 <script>
-    var HTMLElementContentFront = document.querySelector("#contentFront");
-    var HTMLElementContentContextFront = document.querySelector("#contentContextFront");
-    var HTMLElementBack = document.querySelector("#back");
+    (function () {
+        try {
+            const HTMLElementContentFront = document.querySelector("#contentFront");
+            const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
+            const HTMLElementBack = document.querySelector("#back");
 
-    function show(HTMLElement) {
-        HTMLElement.style.boxShadow = "none";
-        HTMLElement.style.color = "inherit";
-    }
+            function show(HTMLElement) {
+                HTMLElement.style.boxShadow = "none";
+                HTMLElement.style.color = "inherit";
+            }
 
-    if (!HTMLElementBack) {
-        if (HTMLElementContentFront) {
-            setTimeout(() => {
+            if (!HTMLElementBack) {
+                setTimeout(() => {
+                    show(HTMLElementContentFront);
+                    HTMLElementContentContextFront && show(HTMLElementContentContextFront);
+                }, 3_000);
+            } else {
                 show(HTMLElementContentFront);
                 HTMLElementContentContextFront && show(HTMLElementContentContextFront);
-            }, 3_000)
+            }
+        } catch (error) {
+            document.body.style.backgroundColor = 'red';
+            throw error;
         }
-    } else {
-        show(HTMLElementContentFront);
-    }
+    })();
 </script>

@@ -9,7 +9,12 @@
     flex-direction: column;
 }
 
-#contentFront, #contentContextFront {
+#contentFront {
+    box-shadow: inset 0 0 999px gray;
+    color: transparent;
+}
+
+#contentContextFront {
     box-shadow: inset 0 0 999px gray;
     color: transparent;
 }
