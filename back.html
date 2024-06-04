@@ -13,12 +13,18 @@
 <script>
     (function () {
         try {
-            const store = { indexShow: 0 };
+            const store = { indexShow: 0, indexTe: 0 };
+
+            const HTMLElementContentFront = document.querySelector("#contentFront");
+            const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
 
             function showItem(HTMLElement) {
                 HTMLElement.style.boxShadow = "none";
                 HTMLElement.style.color = "inherit";
             }
+
+            showItem(HTMLElementContentFront);
+            HTMLElementContentContextFront && showItem(HTMLElementContentContextFront);
 
             document.addEventListener("click", function () {
                 const hiddenDiv = document.querySelectorAll("i");

@@ -18,15 +18,10 @@
                 HTMLElement.style.color = "inherit";
             }
 
-            if (!HTMLElementBack) {
-                setTimeout(() => {
-                    show(HTMLElementContentFront);
-                    HTMLElementContentContextFront && show(HTMLElementContentContextFront);
-                }, 3_000);
-            } else {
+            setTimeout(() => {
                 show(HTMLElementContentFront);
                 HTMLElementContentContextFront && show(HTMLElementContentContextFront);
-            }
+            }, 3_000);
         } catch (error) {
             document.body.style.backgroundColor = 'red';
             throw error;
