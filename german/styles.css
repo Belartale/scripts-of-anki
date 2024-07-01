@@ -1,0 +1,42 @@
+.card {
+    font-family: arial;
+    font-size: 16px;
+    text-align: center;
+    color: black;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+}
+
+i {
+    font-style: normal;
+}
+
+b {
+    color: rgb(255, 255, 0);
+}
+
+#contentFront, #contentFront2, #contentContextFront, i {
+    box-shadow: inset 0 0 999px gray;
+    color: transparent;
+}
+
+#back img {
+    max-height: 100vh;
+}
+
+#image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#image img {
+    max-width: 45vw;
+    object-fit: contain;
+}
+
+.hidden {
+    position: absolute;
+    top: -999px;
+}

@@ -1,6 +1,6 @@
 .card {
     font-family: arial;
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
     color: black;
     background-color: white;
@@ -9,12 +9,15 @@
     flex-direction: column;
 }
 
-#contentFront {
-    box-shadow: inset 0 0 999px gray;
-    color: transparent;
+i {
+    font-style: normal;
 }
 
-#contentContextFront {
+b {
+    color: rgb(255, 255, 0);
+}
+
+#contentFront, #contentFront2, #contentContextFront, i {
     box-shadow: inset 0 0 999px gray;
     color: transparent;
 }
@@ -33,12 +36,7 @@
     object-fit: contain;
 }
 
-i {
-    box-shadow: inset 0 0 999px gray;
-    color: transparent;
-    font-style: normal;
-}
-
-b {
-    color: rgb(255, 255, 0);
+.hidden {
+    position: absolute;
+    top: -999px;
 }
