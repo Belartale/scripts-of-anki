@@ -12,7 +12,7 @@
 <script>
     function paintFront(HTMLElement) {
         const contentOfHTMLElement = HTMLElement.innerText;
-        const gotArticle = contentOfHTMLElement.split(' ')[0];
+        const gotArticle = contentOfHTMLElement.split(/ |\u00A0/)[0];
         
         switch (gotArticle) {
             case 'der':

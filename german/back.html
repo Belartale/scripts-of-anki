@@ -2,6 +2,8 @@
 
 <hr>
 
+<div id="audioFront2">{{AudioFront2}}<div>
+
 <div id="back">
     <div id="contextBack">
         {{Back}}
@@ -27,6 +29,7 @@
             showItem(HTMLElementContentFront);
             showItem(HTMLElementContentFront2);
             HTMLElementContentContextFront && showItem(HTMLElementContentContextFront);
+            HTMLElementContentFront && paintFront(HTMLElementContentFront);
 
             document.addEventListener("click", function () {
                 const hiddenDiv = document.querySelectorAll("i");
