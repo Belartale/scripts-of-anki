@@ -5,43 +5,43 @@
 <div id="audioFront2">{{AudioFront2}}<div>
 
 <div id="back">
-    <div id="contextBack">
-        {{Back}}
-    </div>
+  <div id="contextBack">
+    {{Back}}
+  </div>
 <div>
 
 <div id="image">{{Image}}</div>
 
 <script>
-    (function () {
-        try {
-            const store = { indexShow: 0, indexTe: 0 };
+  (function () {
+    try {
+      const store = { indexShow: 0, indexTe: 0 };
 
-            const HTMLElementContentFront = document.querySelector("#contentFront");
-            const HTMLElementContentFront2 = document.querySelector("#contentFront2");
-            const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
+      const HTMLElementContentFront = document.querySelector("#contentFront");
+      const HTMLElementContentFront2 = document.querySelector("#contentFront2");
+      const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
 
-            function showItem(HTMLElement) {
-                HTMLElement.style.boxShadow = "none";
-                HTMLElement.style.color = "inherit";
-            }
+      function showItem(HTMLElement) {
+        HTMLElement.style.boxShadow = "none";
+        HTMLElement.style.color = "inherit";
+      }
 
-            showItem(HTMLElementContentFront);
-            showItem(HTMLElementContentFront2);
-            HTMLElementContentContextFront && showItem(HTMLElementContentContextFront);
+      showItem(HTMLElementContentFront);
+      showItem(HTMLElementContentFront2);
+      HTMLElementContentContextFront && showItem(HTMLElementContentContextFront);
 
-            document.addEventListener("click", function () {
-                const hiddenDiv = document.querySelectorAll("i");
+      document.addEventListener("click", function () {
+        const hiddenDiv = document.querySelectorAll("i");
 
-                if (hiddenDiv[store.indexShow]) {
-                    showItem(hiddenDiv[store.indexShow]);
-                    store.indexShow += 1;
-                }
-            });   
-        } catch (error) {
-            document.body.style.backgroundColor = 'red';
-            throw error;
+        if (hiddenDiv[store.indexShow]) {
+          showItem(hiddenDiv[store.indexShow]);
+          store.indexShow += 1;
         }
-    })();
+      });
+    } catch (error) {
+      document.body.style.backgroundColor = 'red';
+      throw error;
+    }
+  })();
 
 </script>

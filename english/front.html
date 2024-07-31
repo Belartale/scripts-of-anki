@@ -1,35 +1,35 @@
 <div id="front">
-    <h2 id="contentFront">{{Front}}</h2><span class="hidden">...</span>
+  <h2 id="contentFront">{{Front}}</h2><span class="hidden">...</span>
 <div>
 <div id="front2">
-    <span id="contentFront2"><i>{{Front2}}</i></span>
+  <span id="contentFront2"><i>{{Front2}}</i></span>
 <div>
 <div id="audioFront">{{AudioFront}}<div>
 <div id="contextFront">
-    <span id="contentContextFront">{{ContextFront}}</span>
+  <span id="contentContextFront">{{ContextFront}}</span><span class="hidden">...</span>
 </div>
 
 <script>
-    (function () {
-        try {
-            const HTMLElementContentFront = document.querySelector("#contentFront");
-            const HTMLElementContentFront2 = document.querySelector("#contentFront2");
-            const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
-            const HTMLElementBack = document.querySelector("#back");
+  (function () {
+    try {
+      const HTMLElementContentFront = document.querySelector("#contentFront");
+      const HTMLElementContentFront2 = document.querySelector("#contentFront2");
+      const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
+      const HTMLElementBack = document.querySelector("#back");
 
-            function show(HTMLElement) {
-                HTMLElement.style.boxShadow = "none";
-                HTMLElement.style.color = "inherit";
-            }
+      function show(HTMLElement) {
+        HTMLElement.style.boxShadow = "none";
+        HTMLElement.style.color = "inherit";
+      }
 
-            setTimeout(() => {
-                show(HTMLElementContentFront);
-                show(HTMLElementContentFront2);
-                HTMLElementContentContextFront && show(HTMLElementContentContextFront);
-            }, 3_000);
-        } catch (error) {
-            document.body.style.backgroundColor = 'red';
-            throw error;
-        }
-    })();
+      setTimeout(() => {
+        show(HTMLElementContentFront);
+        show(HTMLElementContentFront2);
+        HTMLElementContentContextFront && show(HTMLElementContentContextFront);
+      }, 3_000);
+    } catch (error) {
+      document.body.style.backgroundColor = 'red';
+      throw error;
+    }
+  })();
 </script>
