@@ -1,15 +1,19 @@
-<div id="front">
-  <h2 id="contentFront">{{Front}}</h2><span class="hidden">...</span>
+<div>
+  <h2 id="front">{{Front}}</h2><span class="hidden">...</span>
 </div>
 
 <div id="audioFront">{{AudioFront}}</div>
 
-<div id="contextFront">
-  <span id="contentContextFront">{{ContextFront}}</span><span class="hidden">...</span>
+<div>
+  <span id="contextFront">{{ContextFront}}</span><span class="hidden">...</span>
 </div>
 
 <script>
   function paintFront(HTMLElement) {
+    if (!HTMLElement) {
+      return;
+    }
+
     const contentOfHTMLElement = HTMLElement.innerText;
     const gotArticle = contentOfHTMLElement.split(/ |\u00A0/)[0];
 
@@ -33,23 +37,23 @@
   }
 
   function show(HTMLElement) {
+    if (!HTMLElement) {
+      return;
+    }
+
     HTMLElement.style.boxShadow = "none";
     HTMLElement.style.color = "inherit";
   }
 
   (function () {
     try {
-      const HTMLElementContentFront = document.querySelector("#contentFront");
       const HTMLElementFront = document.querySelector("#front");
-      const HTMLElementContentFront2 = document.querySelector("#contentFront2");
-      const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
+      const HTMLElementContextFront = document.querySelector("#contextFront");
       const HTMLElementBack = document.querySelector("#back");
 
       setTimeout(() => {
-        show(HTMLElementContentFront);
-        show(HTMLElementContentFront2);
-        HTMLElementContentContextFront && show(HTMLElementContentContextFront);
-        HTMLElementContentFront && paintFront(HTMLElementContentFront);
+        show(HTMLElementFront);
+        paintFront(HTMLElementFront);
       }, 3_000);
     } catch (error) {
       document.body.style.backgroundColor = 'red';

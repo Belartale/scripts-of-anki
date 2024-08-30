@@ -2,8 +2,8 @@
 
 <hr>
 
-<div id="front2">
-  <span id="contentFront2">{{Front2}}</span>
+<div>
+  <span id="front2">{{Front2}}</span>
 </div>
 
 <div id="audioFront2">{{AudioFront2}}</div>
@@ -21,20 +21,18 @@
     try {
       const store = { indexShow: 0, indexTe: 0 };
 
-      const HTMLElementContentFront = document.querySelector("#contentFront");
-      const HTMLElementContentFront2 = document.querySelector("#contentFront2");
-      const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
+      const HTMLElementFront = document.querySelector("#front");
+      const HTMLElementFront2 = document.querySelector("#front2");
 
-      showItem(HTMLElementContentFront);
-      showItem(HTMLElementContentFront2);
-      HTMLElementContentContextFront && showItem(HTMLElementContentContextFront);
-      HTMLElementContentFront && paintFront(HTMLElementContentFront);
+      show(HTMLElementFront);
+      paintFront(HTMLElementFront);
+      show(HTMLElementFront2);
 
       document.addEventListener("click", function () {
         const hiddenDiv = document.querySelectorAll("i");
 
         if (hiddenDiv[store.indexShow]) {
-          showItem(hiddenDiv[store.indexShow]);
+          show(hiddenDiv[store.indexShow]);
           store.indexShow += 1;
         }
       });

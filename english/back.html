@@ -2,13 +2,17 @@
 
 <hr>
 
-<div id="audioFront2">{{AudioFront2}}<div>
+<div id="front2">
+  <span id="contentFront2">{{Front2}}</span>
+</div>
+
+<div id="audioFront2">{{AudioFront2}}</div>
 
 <div id="back">
   <div id="contextBack">
     {{Back}}
   </div>
-<div>
+</div>
 
 <div id="image">{{Image}}</div>
 
@@ -21,20 +25,15 @@
       const HTMLElementContentFront2 = document.querySelector("#contentFront2");
       const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
 
-      function showItem(HTMLElement) {
-        HTMLElement.style.boxShadow = "none";
-        HTMLElement.style.color = "inherit";
-      }
-
-      showItem(HTMLElementContentFront);
-      showItem(HTMLElementContentFront2);
-      HTMLElementContentContextFront && showItem(HTMLElementContentContextFront);
+      show(HTMLElementContentFront);
+      show(HTMLElementContentFront2);
+      show(HTMLElementContentContextFront);
 
       document.addEventListener("click", function () {
         const hiddenDiv = document.querySelectorAll("i");
 
         if (hiddenDiv[store.indexShow]) {
-          showItem(hiddenDiv[store.indexShow]);
+          show(hiddenDiv[store.indexShow]);
           store.indexShow += 1;
         }
       });
@@ -43,5 +42,4 @@
       throw error;
     }
   })();
-
 </script>
