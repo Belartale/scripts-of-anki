@@ -1,10 +1,9 @@
 <div id="front">
   <h2 id="contentFront">{{Front}}</h2><span class="hidden">...</span>
-<div>
-<div id="front2">
-  <span id="contentFront2">{{Front2}}</span>
-<div>
-<div id="audioFront">{{AudioFront}}<div>
+</div>
+
+<div id="audioFront">{{AudioFront}}</div>
+
 <div id="contextFront">
   <span id="contentContextFront">{{ContextFront}}</span><span class="hidden">...</span>
 </div>
@@ -33,6 +32,11 @@
     }
   }
 
+  function show(HTMLElement) {
+    HTMLElement.style.boxShadow = "none";
+    HTMLElement.style.color = "inherit";
+  }
+
   (function () {
     try {
       const HTMLElementContentFront = document.querySelector("#contentFront");
@@ -40,11 +44,6 @@
       const HTMLElementContentFront2 = document.querySelector("#contentFront2");
       const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
       const HTMLElementBack = document.querySelector("#back");
-
-      function show(HTMLElement) {
-        HTMLElement.style.boxShadow = "none";
-        HTMLElement.style.color = "inherit";
-      }
 
       setTimeout(() => {
         show(HTMLElementContentFront);
