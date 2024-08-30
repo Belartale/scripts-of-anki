@@ -8,7 +8,10 @@
   <span id="contentContextFront">{{ContextFront}}</span><span class="hidden">...</span>
 </div>
 
-<dialog open id="dialog"></dialog>
+<dialog open id="dialog">
+  {{Deck}}
+  {{Subdeck}}
+</dialog>
 
 <script>
   function show(HTMLElement) {
@@ -24,8 +27,8 @@
     const HTMLElementDialog = document.querySelector("#dialog");
 
     try {
-      document.querySelector("#dialog").textContent = String(this);
-      console.log(`this >>> `, this);
+      // document.querySelector("#dialog").textContent = String(this);
+      // console.log(`window >>> `, window);
 
 
       const HTMLElementContentFront = document.querySelector("#contentFront");
