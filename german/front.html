@@ -11,9 +11,13 @@
 <dialog></dialog>
 
 <script>
-  const prefixes = ['vor', 'ab'];
+  const prefixes = [
+    "ab", "an", "auf", "aus", "bei", "dar", "ein", "empor", 
+    "entgegen", "fehl", "fest", "fort", "gegenüber", "her", 
+    "hin", "hoch", "los", "mit", "nach", "nieder", "vor", 
+    "weg", "weiter", "wieder", "zu", "zurück", "zusammen"
+];
   const ending = ['ieren'];
-  // const unPrefixes = ["be", "emp", "ent", "er", "ge", "miss", "ver", "zer"];
 
   function paintFront(HTMLElement) {
     if (!HTMLElement) {
