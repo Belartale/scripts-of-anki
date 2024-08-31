@@ -8,6 +8,8 @@
   <span id="contextFront">{{ContextFront}}</span><span class="hidden">...</span>
 </div>
 
+<dialog></dialog>
+
 <script>
   function paintFront(HTMLElement) {
     if (!HTMLElement) {
@@ -44,6 +46,7 @@
     HTMLElement.style.boxShadow = "none";
     HTMLElement.style.color = "inherit";
   }
+
 
   (function () {
     try {
