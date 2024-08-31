@@ -4,7 +4,7 @@
 
 <div>
   <span id="front2">{{Front2}}</span>
-  <span class="hidden">{{Subdeck}}</span>
+  <span id="subdeck" class="hidden">{{Subdeck}}</span>
 </div>
 
 <div id="audioFront2">{{AudioFront2}}</div>
@@ -24,10 +24,19 @@
 
       const HTMLElementFront = document.querySelector("#front");
       const HTMLElementFront2 = document.querySelector("#front2");
+      const HTMLElementSubdeck = document.querySelector("#subdeck");
 
       show(HTMLElementFront);
       paintFront(HTMLElementFront);
       show(HTMLElementFront2);
+
+      if (HTMLElementFront2.textContent === 'regelmäßigeVerben' && HTMLElementFront2) {
+        const result = !prefixes.some((prefix) => HTMLElementFront2.textContent.startsWith(prefix));
+
+        if (result) {
+
+        }
+      }
 
       document.addEventListener("click", function () {
         const hiddenDiv = document.querySelectorAll("i");
