@@ -24,11 +24,13 @@
 
       const HTMLElementFront = document.querySelector("#front");
       const HTMLElementFront2 = document.querySelector("#front2");
+      const HTMLElementContextFront = document.querySelector("#contextFront");
       const HTMLElementSubdeck = document.querySelector("#subdeck");
 
       show(HTMLElementFront);
       paintFront(HTMLElementFront);
       show(HTMLElementFront2);
+      show(HTMLElementContextFront);
 
       if (HTMLElementFront2.textContent === 'regelmäßigeVerben' && HTMLElementFront2) {
         const result = !prefixes.some((prefix) => HTMLElementFront2.textContent.startsWith(prefix));

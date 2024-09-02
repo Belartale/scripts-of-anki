@@ -12,11 +12,11 @@
 
 <script>
   const prefixes = [
-    "ab", "an", "auf", "aus", "bei", "dar", "ein", "empor", 
-    "entgegen", "fehl", "fest", "fort", "gegenüber", "her", 
-    "hin", "hoch", "los", "mit", "nach", "nieder", "vor", 
+    "ab", "an", "auf", "aus", "bei", "dar", "ein", "empor",
+    "entgegen", "fehl", "fest", "fort", "gegenüber", "her",
+    "hin", "hoch", "los", "mit", "nach", "nieder", "vor",
     "weg", "weiter", "wieder", "zu", "zurück", "zusammen"
-];
+  ];
   const ending = ['ieren'];
 
   function paintFront(HTMLElement) {
@@ -65,6 +65,7 @@
       setTimeout(() => {
         show(HTMLElementFront);
         paintFront(HTMLElementFront);
+        show(HTMLElementContextFront);
       }, 3_000);
     } catch (error) {
       document.body.style.backgroundColor = 'red';
