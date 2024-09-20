@@ -17,6 +17,12 @@ i {
     color: transparent;
 }
 
+#contentFront2:not(:empty) {
+    margin-top: 40px !important;
+    padding: 0px 4px;
+    border: 1px dashed orange;
+}
+
 #back img {
     max-height: 100vh;
 }
