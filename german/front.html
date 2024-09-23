@@ -3,7 +3,9 @@
   <span id="subdeck" class="hidden">{{Subdeck}}</span>
 </div>
 
-<div id="audioFront">{{AudioFront}}</div>
+<div>
+  <div id="audioFront">{{AudioFront}}</div>
+</div>
 
 <div>
   <span id="contextFront">{{ContextFront}}</span><span class="hidden">...</span>
@@ -92,7 +94,6 @@
     try {
       const HTMLElementFront = document.querySelector("#front");
       const HTMLElementContextFront = document.querySelector("#contextFront");
-      const HTMLElementBack = document.querySelector("#back");
 
       setTimeout(() => {
         show(HTMLElementFront);
