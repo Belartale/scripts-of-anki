@@ -1,14 +1,43 @@
-<div id="front">
-  <h2 id="contentFront">{{Front}}</h2><span class="hidden">...</span>
+<div>
+  <h2 id="front">{{Front}}</h2><span class="hidden">...</span>
 </div>
 
-<div id="audioFront">{{AudioFront}}</div>
-
-<div id="contextFront">
-  <span id="contentContextFront">{{ContextFront}}</span><span class="hidden">...</span>
+<div>
+  <div id="audioFront">{{AudioFront}}</div>
 </div>
+
+<div>
+  <span id="contextFront">{{ContextFront}}</span><span class="hidden">...</span>
+</div>
+
+<dialog></dialog>
 
 <script>
+  function replaceTextWithTable(element) {
+    if (!element) {
+      return;
+    }
+
+    const content = element.textContent.trim();
+    if (!content) return;
+
+    const parts = content.split(',');
+
+    if (parts.length !== 3) {
+      throw new Error("Содержимое элемента должно быть разделено на три части.");
+    }
+
+    element.innerHTML = `
+        <table>
+          <tr>
+            <td>${parts[0]}</td>
+            <td>${parts[1]}</td>
+            <td>${parts[2]}</td>
+          </tr>
+        </table>
+    `;
+  }
+
   function show(HTMLElement) {
     if (!HTMLElement) {
       return;
@@ -18,24 +47,27 @@
     HTMLElement.style.color = "inherit";
   }
 
+  function showError(error) {
+    const HTMLElementDialog = document.querySelector("dialog");
+    HTMLElementDialog.textContent = String(error);
+    HTMLElementDialog.setAttribute('open', 'true');;
+    document.body.style.backgroundColor = 'red';
+  }
+
   (function () {
     const HTMLElementDialog = document.querySelector("#dialog");
 
     try {
-      const HTMLElementContentFront = document.querySelector("#contentFront");
-      const HTMLElementContentFront2 = document.querySelector("#contentFront2");
-      const HTMLElementContentContextFront = document.querySelector("#contentContextFront");
+      const HTMLElementFront = document.querySelector("#front");
+      const HTMLElementContextFront = document.querySelector("#contextFront");
       const HTMLElementBack = document.querySelector("#back");
 
       setTimeout(() => {
-        show(HTMLElementContentFront);
-        show(HTMLElementContentFront2);
-        show(HTMLElementContentContextFront);
+        show(HTMLElementFront);
+        show(HTMLElementContextFront);
       }, 3_000);
     } catch (error) {
-      document.body.style.backgroundColor = 'red';
-      HTMLElementDialog.textContent = JSON.stringify(error);
-      console.log(`error >>> `, error)
+      showError(error);
       throw error;
     }
   })();
