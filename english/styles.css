@@ -18,25 +18,31 @@ b {
 }
 
 #front,
+#front2,
 #contextFront,
 i {
     box-shadow: inset 0 0 999px gray;
     color: transparent;
 }
 
-#front2:not(:empty) {
+#front22:not(:empty) {
     display: flex;
     justify-content: center;
 }
 
-#front2 td {
-    padding: 4px 4px;
+table {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 table,
 th,
 td {
     border: 1px solid orange;
+}
+
+td {
+    padding: 4px;
 }
 
 #back img {

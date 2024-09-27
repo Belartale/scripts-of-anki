@@ -1,6 +1,6 @@
 <div>
-  <h2 id="front">{{Front}}</h2><span class="hidden">...</span>
-  <span id="subdeck" class="hidden">{{Subdeck}}</span>
+  <h2 id="front" data-subdeck="{{Subdeck}}">{{Front}}</h2><span class="hidden">...</span>
+  <dialog></dialog>
 </div>
 
 <div>
@@ -11,7 +11,9 @@
   <span id="contextFront">{{ContextFront}}</span><span class="hidden">...</span>
 </div>
 
-<dialog></dialog>
+<div>
+  <div id="front2" data-front2="{{Front2}}"></div>
+</div>
 
 <script>
   const prefixes = [
@@ -74,26 +76,33 @@
     }
   }
 
-  function show(HTMLElement) {
+  function show(HTMLElement, isNotNotice) {
     if (!HTMLElement) {
       return;
     }
 
     HTMLElement.style.boxShadow = "none";
     HTMLElement.style.color = "inherit";
+    if (isNotNotice) HTMLElement.style.textDecoration = "orange underline";
   }
 
   function showError(error) {
     const HTMLElementDialog = document.querySelector("dialog");
     HTMLElementDialog.textContent = String(error);
-    HTMLElementDialog.setAttribute('open', 'true');;
+    HTMLElementDialog.setAttribute('open', 'true');
     document.body.style.backgroundColor = 'red';
   }
 
   (function () {
     try {
       const HTMLElementFront = document.querySelector("#front");
+      const HTMLElementFront2 = document.querySelector("#front2");
       const HTMLElementContextFront = document.querySelector("#contextFront");
+
+      const dataFront2 = HTMLElementFront2.getAttribute("data-front2");
+
+      HTMLElementFront2.textContent = dataFront2;
+      replaceTextWithTable(HTMLElementFront2);
 
       setTimeout(() => {
         show(HTMLElementFront);

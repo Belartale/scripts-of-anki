@@ -2,10 +2,6 @@
 
 <hr>
 
-<div>
-  <span id="front2">{{Front2}}</span>
-</div>
-
 <div id="audioFront2">{{AudioFront2}}</div>
 
 <div>
@@ -28,15 +24,14 @@
       const HTMLElementContextFront = document.querySelector("#contextFront");
 
       show(HTMLElementFront);
+      show(HTMLElementFront2);
       paintFront(HTMLElementFront);
       show(HTMLElementContextFront);
-      replaceTextWithTable(HTMLElementFront2);
-
       document.addEventListener("click", function () {
         const hiddenDiv = document.querySelectorAll("i");
 
         if (hiddenDiv[store.indexShow]) {
-          show(hiddenDiv[store.indexShow]);
+          show(hiddenDiv[store.indexShow], true);
           store.indexShow += 1;
         }
       });
