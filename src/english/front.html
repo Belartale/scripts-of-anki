@@ -41,15 +41,21 @@
     `;
   }
 
-  function show(HTMLElement, isNotNotice) {
+  function show(HTMLElement, isNotice) {
     if (!HTMLElement) {
       return;
     }
 
+    const tagName = HTMLElement.tagName.toLowerCase();
+    const prevTagName = HTMLElement.parentElement.tagName.toLowerCase();
+
     HTMLElement.style.boxShadow = "none";
     HTMLElement.style.color = "inherit";
-    if (isNotNotice) HTMLElement.style.textDecoration = "orange underline";
+    if (isNotice && prevTagName !== "td") {
+      HTMLElement.style.textDecoration = "orange underline";
+    }
   }
+
 
   function showError(error) {
     const HTMLElementDialog = document.querySelector("dialog");

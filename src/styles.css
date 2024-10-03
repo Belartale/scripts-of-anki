@@ -17,6 +17,14 @@ b {
     color: rgb(255, 255, 0);
 }
 
+.orange {
+    color: orange;
+}
+
+.pink {
+    color: pink;
+}
+
 #front,
 #front2,
 #contextFront,

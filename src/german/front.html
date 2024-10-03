@@ -24,31 +24,6 @@
   ];
   const ending = ['ieren'];
 
-  function replaceTextWithTable(element) {
-    if (!element) {
-      return;
-    }
-
-    const content = element.textContent.trim();
-    if (!content) return;
-
-    const parts = content.split(',');
-
-    if (parts.length !== 3) {
-      throw new Error("Содержимое элемента должно быть разделено на три части.");
-    }
-
-    element.innerHTML = `
-        <table>
-          <tr>
-            <td>${parts[0]}</td>
-            <td>${parts[1]}</td>
-            <td>${parts[2]}</td>
-          </tr>
-        </table>
-    `;
-  }
-
   function paintFront(HTMLElement) {
     if (!HTMLElement) {
       return;
@@ -76,14 +51,52 @@
     }
   }
 
-  function show(HTMLElement, isNotNotice) {
+  function checkAndHighlightText(firstElement, secondElement) {
+
+  }
+
+  ///////////////////////////////
+  ///////////////////////////////
+  ///////////////////////////////
+
+  function replaceTextWithTable(element) {
+    if (!element) {
+      return;
+    }
+
+    const content = element.textContent.trim();
+    if (!content) return;
+
+    const parts = content.split(',');
+
+    if (parts.length !== 3) {
+      throw new Error("Содержимое элемента должно быть разделено на три части.");
+    }
+
+    element.innerHTML = `
+        <table>
+          <tr>
+            <td>${parts[0]}</td>
+            <td>${parts[1]}</td>
+            <td>${parts[2]}</td>
+          </tr>
+        </table>
+    `;
+  }
+
+  function show(HTMLElement, isNotice) {
     if (!HTMLElement) {
       return;
     }
 
+    const tagName = HTMLElement.tagName.toLowerCase();
+    const prevTagName = HTMLElement.parentElement.tagName.toLowerCase();
+
     HTMLElement.style.boxShadow = "none";
     HTMLElement.style.color = "inherit";
-    if (isNotNotice) HTMLElement.style.textDecoration = "orange underline";
+    if (isNotice && prevTagName !== "td") {
+      HTMLElement.style.textDecoration = "orange underline";
+    }
   }
 
   function showError(error) {
