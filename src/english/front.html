@@ -16,6 +16,37 @@
 </div>
 
 <script>
+  const store = {
+    indexShow: 0,
+    contextFront: [],
+  };
+
+  function togglePartialViewOfContextFront(HTMLElement, toggle) {
+    if (!HTMLElement.textContent) return;
+    const regex = /\(.*?\)/g;
+
+    if (toggle === true) {
+      const result = HTMLElement.innerHTML.replace(regex, function (match) {
+        const shiftedElement = store.contextFront.shift();
+
+        return shiftedElement;
+      });
+      HTMLElement.innerHTML = result;
+
+      return;
+    } else if (toggle === false) {
+      const result = HTMLElement.innerHTML.replace(regex, function (match) {
+        store.contextFront.push(match);
+        return "(...)";
+      });
+      HTMLElement.innerHTML = result;
+
+      return;
+    }
+
+    throw Error("toggle is not Boolean");
+  }
+
   function replaceTextWithTable(element) {
     if (!element) {
       return;
@@ -77,6 +108,7 @@
 
       HTMLElementFront2.textContent = dataFront2;
       replaceTextWithTable(HTMLElementFront2);
+      togglePartialViewOfContextFront(HTMLElementContextFront, false);
 
       setTimeout(() => {
         show(HTMLElementFront);

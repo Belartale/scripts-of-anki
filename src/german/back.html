@@ -17,17 +17,17 @@
 <script>
   (function () {
     try {
-      const store = { indexShow: 0, indexTe: 0 };
-
       const HTMLElementFront = document.querySelector("#front");
       const HTMLElementFront2 = document.querySelector("#front2");
       const HTMLElementFront2TableTr = HTMLElementFront2.querySelector("table tr");
       const HTMLElementContextFront = document.querySelector("#contextFront");
 
       show(HTMLElementFront);
+
       show(HTMLElementFront2);
       checkAndHighlightText(HTMLElementFront, HTMLElementFront2TableTr);
       paintFront(HTMLElementFront);
+      togglePartialViewOfContextFront(HTMLElementContextFront, true);
       show(HTMLElementContextFront);
       document.addEventListener("click", function () {
         const hiddenDiv = document.querySelectorAll("i");
@@ -42,4 +42,5 @@
       throw error;
     }
   })();
+
 </script>

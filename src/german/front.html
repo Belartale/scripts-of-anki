@@ -16,20 +16,20 @@
 </div>
 
 <script>
-  const prefixes = [
-    "ab", "an", "auf", "aus", "bei", "dar", "ein", "empor",
-    "entgegen", "fehl", "fest", "fort", "gegenüber", "her",
-    "hin", "hoch", "los", "mit", "nach", "nieder", "vor",
-    "weg", "weiter", "wieder", "zu", "zurück", "zusammen"
-  ];
+  const store = {
+    indexShow: 0,
+    contextFront: [],
+  };
+
   const ending = ['ieren'];
 
   function paintFront(HTMLElement) {
     if (!HTMLElement) {
+      throw Error("can not find HTMLElement");
       return;
     }
 
-    const contentOfHTMLElement = HTMLElement.innerText;
+    const contentOfHTMLElement = HTMLElement.textContent;
     const gotArticle = contentOfHTMLElement.split(/ |\u00A0/)[0];
 
     switch (gotArticle) {
@@ -51,13 +51,41 @@
     }
   }
 
-  function checkAndHighlightText(firstElement, secondElement) {
+  ////////////////////////
+
+  function checkAndHighlightText(div, tr) {
 
   }
 
   ///////////////////////////////
   ///////////////////////////////
   ///////////////////////////////
+
+  function togglePartialViewOfContextFront(HTMLElement, toggle) {
+    if (!HTMLElement.textContent) return;
+    const regex = /\(.*?\)/g;
+
+    if (toggle === true) {
+      const result = HTMLElement.innerHTML.replace(regex, function (match) {
+        const shiftedElement = store.contextFront.shift();
+
+        return shiftedElement;
+      });
+      HTMLElement.innerHTML = result;
+
+      return;
+    } else if (toggle === false) {
+      const result = HTMLElement.innerHTML.replace(regex, function (match) {
+        store.contextFront.push(match);
+        return "(...)";
+      });
+      HTMLElement.innerHTML = result;
+
+      return;
+    }
+
+    throw Error("toggle is not Boolean");
+  }
 
   function replaceTextWithTable(element) {
     if (!element) {
@@ -116,6 +144,8 @@
 
       HTMLElementFront2.textContent = dataFront2;
       replaceTextWithTable(HTMLElementFront2);
+
+      togglePartialViewOfContextFront(HTMLElementContextFront, false);
 
       setTimeout(() => {
         show(HTMLElementFront);
