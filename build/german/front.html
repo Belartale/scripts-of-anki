@@ -1,0 +1,160 @@
+<div>
+  <h2 id="front" data-subdeck="{{Subdeck}}">{{Front}}</h2><span class="hidden">...</span>
+  <h3 id="plural">{{Plural}}</h3>
+  <dialog></dialog>
+</div>
+
+<div>
+  <div id="audioFront">{{AudioFront}}</div>
+</div>
+
+<div>
+  <span id="contextFront">{{ContextFront}}</span><span class="hidden">...</span>
+</div>
+
+<div>
+  <div id="front2" data-front2="{{Front2}}"></div>
+</div>
+
+<script>
+  const ending = ['ieren'];
+
+  function checkAndHighlightText(div, tr) {
+
+  }
+
+  function paintFront(HTMLElement) {
+    if (!HTMLElement) {
+      throw Error("can not find HTMLElement");
+      return;
+    }
+
+    const contentOfHTMLElement = HTMLElement.textContent;
+    const gotArticle = contentOfHTMLElement.split(/ |\u00A0/)[0];
+
+    switch (gotArticle) {
+      case 'der':
+        HTMLElement.style.color = '#5998c5';
+        break;
+
+      case 'die':
+        HTMLElement.style.color = '#d75656';
+        break;
+
+      case 'das':
+        HTMLElement.style.color = '#649b62';
+        break;
+
+      default:
+        // #d19554
+        break;
+    }
+  }
+
+  ///////////////////////////////
+  ///////////////////////////////
+  ///////////////////////////////
+
+  // COMMON FRONT
+  const store = {
+    indexShow: 0,
+    contextFront: [],
+  };
+  
+  function togglePartialViewOfContextFront(HTMLElement, toggle) {
+    if (!HTMLElement.textContent) return;
+    const regex = /\(.*?\)/g;
+  
+    if (toggle === true) {
+      const result = HTMLElement.innerHTML.replace(regex, function (match) {
+        const shiftedElement = store.contextFront.shift();
+  
+        return shiftedElement;
+      });
+      HTMLElement.innerHTML = result;
+  
+      return;
+    } else if (toggle === false) {
+      const result = HTMLElement.innerHTML.replace(regex, function (match) {
+        store.contextFront.push(match);
+        return "(...)";
+      });
+      HTMLElement.innerHTML = result;
+  
+      return;
+    }
+  
+    throw Error("toggle is not Boolean");
+  }
+  
+  function replaceTextWithTable(element) {
+    if (!element) {
+      return;
+    }
+  
+    const content = element.textContent.trim();
+    if (!content) return;
+  
+    const parts = content.split(',');
+  
+    if (parts.length !== 3) {
+      throw new Error("Содержимое элемента должно быть разделено на три части.");
+    }
+  
+    element.innerHTML = `
+          <table>
+            <tr>
+              <td>${parts[0]}</td>
+              <td>${parts[1]}</td>
+              <td>${parts[2]}</td>
+            </tr>
+          </table>
+      `;
+  }
+  
+  function show(HTMLElement, isNotice) {
+    if (!HTMLElement) {
+      return;
+    }
+  
+    const tagName = HTMLElement.tagName.toLowerCase();
+    const prevTagName = HTMLElement.parentElement.tagName.toLowerCase();
+  
+    HTMLElement.style.boxShadow = "none";
+    HTMLElement.style.color = "inherit";
+    if (isNotice && prevTagName !== "td") {
+      HTMLElement.style.textDecoration = "orange underline";
+    }
+  }
+  
+  function showError(error) {
+    const HTMLElementDialog = document.querySelector("dialog");
+    HTMLElementDialog.textContent = String(error);
+    HTMLElementDialog.setAttribute('open', 'true');
+    document.body.style.backgroundColor = 'red';
+  }
+
+  (function () {
+    try {
+      const HTMLElementFront = document.querySelector("#front");
+      const HTMLElementFront2 = document.querySelector("#front2");
+      const HTMLElementContextFront = document.querySelector("#contextFront");
+
+      const dataFront2 = HTMLElementFront2.getAttribute("data-front2");
+
+      HTMLElementFront2.textContent = dataFront2;
+      replaceTextWithTable(HTMLElementFront2);
+
+      togglePartialViewOfContextFront(HTMLElementContextFront, false);
+
+      setTimeout(() => {
+        show(HTMLElementFront);
+        paintFront(HTMLElementFront);
+        show(HTMLElementContextFront);
+      }, 3_000);
+    } catch (error) {
+      showError(error);
+      throw error;
+    }
+  })();
+</script>

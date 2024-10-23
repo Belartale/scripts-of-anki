@@ -4,8 +4,8 @@
 
 <div id="audioFront2">{{AudioFront2}}</div>
 
-<div>
-  <div id="back">
+<div id="back">
+  <div id="contextBack">
     {{Back}}
   </div>
 </div>
@@ -19,21 +19,18 @@
     try {
       const HTMLElementFront = document.querySelector("#front");
       const HTMLElementFront2 = document.querySelector("#front2");
-      const HTMLElementFront2TableTr = HTMLElementFront2.querySelector("table tr");
       const HTMLElementContextFront = document.querySelector("#contextFront");
 
       show(HTMLElementFront);
-
       show(HTMLElementFront2);
-      checkAndHighlightText(HTMLElementFront, HTMLElementFront2TableTr);
-      paintFront(HTMLElementFront);
       togglePartialViewOfContextFront(HTMLElementContextFront, true);
       show(HTMLElementContextFront);
+
       document.addEventListener("click", function () {
         const hiddenDiv = document.querySelectorAll("i");
 
         if (hiddenDiv[store.indexShow]) {
-          show(hiddenDiv[store.indexShow], true);
+          show(hiddenDiv[store.indexShow]);
           store.indexShow += 1;
         }
       });
