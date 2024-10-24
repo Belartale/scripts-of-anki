@@ -60,19 +60,19 @@
     indexShow: 0,
     contextFront: [],
   };
-  
+
   function togglePartialViewOfContextFront(HTMLElement, toggle) {
     if (!HTMLElement.textContent) return;
     const regex = /\(.*?\)/g;
-  
+
     if (toggle === true) {
       const result = HTMLElement.innerHTML.replace(regex, function (match) {
         const shiftedElement = store.contextFront.shift();
-  
+
         return shiftedElement;
       });
       HTMLElement.innerHTML = result;
-  
+
       return;
     } else if (toggle === false) {
       const result = HTMLElement.innerHTML.replace(regex, function (match) {
@@ -80,27 +80,27 @@
         return "(...)";
       });
       HTMLElement.innerHTML = result;
-  
+
       return;
     }
-  
+
     throw Error("toggle is not Boolean");
   }
-  
+
   function replaceTextWithTable(element) {
     if (!element) {
       return;
     }
-  
+
     const content = element.textContent.trim();
     if (!content) return;
-  
+
     const parts = content.split(',');
-  
+
     if (parts.length !== 3) {
-      throw new Error("Содержимое элемента должно быть разделено на три части.");
+      throw new Error("The content of the element must be divided into three parts!");
     }
-  
+
     element.innerHTML = `
           <table>
             <tr>
@@ -111,22 +111,22 @@
           </table>
       `;
   }
-  
+
   function show(HTMLElement, isNotice) {
     if (!HTMLElement) {
       return;
     }
-  
+
     const tagName = HTMLElement.tagName.toLowerCase();
     const prevTagName = HTMLElement.parentElement.tagName.toLowerCase();
-  
+
     HTMLElement.style.boxShadow = "none";
     HTMLElement.style.color = "inherit";
     if (isNotice && prevTagName !== "td") {
       HTMLElement.style.textDecoration = "orange underline";
     }
   }
-  
+
   function showError(error) {
     const HTMLElementDialog = document.querySelector("dialog");
     HTMLElementDialog.textContent = String(error);
@@ -139,6 +139,7 @@
       const HTMLElementFront = document.querySelector("#front");
       const HTMLElementFront2 = document.querySelector("#front2");
       const HTMLElementContextFront = document.querySelector("#contextFront");
+      const HTMLElementPlural = document.querySelector("#plural");
 
       const dataFront2 = HTMLElementFront2.getAttribute("data-front2");
 
@@ -150,6 +151,7 @@
       setTimeout(() => {
         show(HTMLElementFront);
         paintFront(HTMLElementFront);
+        show(HTMLElementPlural);
         show(HTMLElementContextFront);
       }, 3_000);
     } catch (error) {

@@ -20,15 +20,17 @@
       const HTMLElementFront = document.querySelector("#front");
       const HTMLElementFront2 = document.querySelector("#front2");
       const HTMLElementFront2TableTr = HTMLElementFront2.querySelector("table tr");
+      const HTMLElementContextPlural = document.querySelector("#plural");
       const HTMLElementContextFront = document.querySelector("#contextFront");
 
       show(HTMLElementFront);
-
       show(HTMLElementFront2);
       checkAndHighlightText(HTMLElementFront, HTMLElementFront2TableTr);
       paintFront(HTMLElementFront);
+      show(HTMLElementPlural);
       togglePartialViewOfContextFront(HTMLElementContextFront, true);
       show(HTMLElementContextFront);
+      
       document.addEventListener("click", function () {
         const hiddenDiv = document.querySelectorAll("i");
 

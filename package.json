@@ -8,5 +8,8 @@
   },
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "burst-generate-files": "^0.12.19"
+  }
 }
